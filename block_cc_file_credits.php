@@ -19,10 +19,10 @@
  * Show course's file on the current course page.
  * The block can only be used by teacher of the current course.
  * 
- * @package     block
- * @subpackage  cc_file_credits
- * @author      Shuai Zhang
- * @copyright   2013 Shuai Zhang <shuaizhang@lts.ie>
+ * @package      block
+ * @subpackage   cc_file_credits
+ * @copyright    2013 (c) Learning Technology Services
+ * @contributor  Shuai Zhang <shuaizhang@lts.ie>
  */
 
 class block_cc_file_credits extends block_base {

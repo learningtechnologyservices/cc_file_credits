@@ -18,10 +18,10 @@
 /**
  * Show course's file on the current course page
  * 
- * @package     block
- * @subpackage  cc_file_credits
- * @author      Shuai Zhang
- * @copyright   2013 Shuai Zhang <shuaizhang@lts.ie>
+ * @package      block
+ * @subpackage   cc_file_credits
+ * @copyright    2013 (c) Learning Technology Services
+ * @contributor  Shuai Zhang <shuaizhang@lts.ie>
  */
 
 
@@ -42,13 +42,17 @@ if (!has_capability('block/cc_file_credits:manage', $coursecontext)){
     echo 'Only teacher can access this page.';
     close();
 }
-
 $url = new moodle_url('/blocks/cc_file_credits/view_report.php',array('id'=>$courseid));
+
+$PAGE->set_pagelayout('report');
+$PAGE->set_url($url,array('id' => $courseid));
+$PAGE->set_title($course->fullname);
+$PAGE->set_heading('Files in '.$course->fullname);
 
 //Ensure only teacher can use this block
 if(has_capability('block/cc_file_credits:manage', $coursecontext)){
     $table = new html_table();
-    $table->head = array('Filename','Filesize','Mimetype','Author','License','Time Created');
+    $table->head = array('Name','Size','Type','Author','License','Time Created');
     $tabledata = array();
     $result = $DB->get_records_sql(
        "SELECT filename, filesize, mimetype ,author, license, timecreated
@@ -71,10 +75,11 @@ if(has_capability('block/cc_file_credits:manage', $coursecontext)){
         foreach ($result as $file) {
         	  $file_license = $file->license;
         	  if(is_cc($file_license)) {
-            	  $file->filesize = improve_filesize($file->filesize);
-                $file->author = improve_author($file->author);
+            	  $file->filesize    = improve_filesize($file->filesize);
+                $file->author      = improve_author($file->author);
                 $file->timecreated = improve_timecreated($file->timecreated);
-                $file->license = improve_license($file_license);
+                $file->license     = improve_license($file_license);
+        	      $file->mimetype    = improve_mimetype($file->mimetype, $OUTPUT);
                 array_push($tabledata,$file);
             }
         }
@@ -84,21 +89,13 @@ if(has_capability('block/cc_file_credits:manage', $coursecontext)){
     $table->data = $tabledata;
 }
 
-
-
-//$PAGE->set_pagelayout('course');
-$PAGE->set_pagelayout('report');
-$PAGE->set_url($url,array('id' => $courseid));
-$PAGE->set_title($course->fullname);
-$PAGE->set_heading('Files on '.$course->fullname);
-
-
-
 echo $OUTPUT->header();
 echo $OUTPUT->heading('Files in Course: '.$course->fullname, 1);
 echo html_writer::table($table); 
-
 echo $OUTPUT->footer();
+
+
+
 
 
 
@@ -152,6 +149,14 @@ function improve_license($license) {
         $license = 'Creative Commons - ShareAlike';
     }
     return $license;
+}
+
+// Make mimetype more readable, add an relative icon
+function improve_mimetype($mimetype, $OUTPUT) {
+    $icon_src = $OUTPUT->pix_url(file_mimetype_icon($mimetype))->out();
+    $mimetype = get_mimetype_description($mimetype);
+    $result = html_writer::empty_tag('img', array('src' => $icon_src, 'alt' => $mimetype)).$mimetype;
+    return $result;
 }
 
 // Determine if a file is with creative commons license

@@ -18,10 +18,10 @@
 /**
  * Display course's file on the current course page
  * 
- * @package     block
- * @subpackage  cc_file_credits
- * @author      Shuai Zhang
- * @copyright   2013 Shuai Zhang <shuaizhang@lts.ie>
+ * @package      block
+ * @subpackage   cc_file_credits
+ * @copyright    2013 (c) Learning Technology Services
+ * @contributor  Shuai Zhang <shuaizhang@lts.ie>
  */
 
 $string['pluginname'] = 'CC File Credits';

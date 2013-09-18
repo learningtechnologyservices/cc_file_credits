@@ -1,4 +1,4 @@
-Course Files Block for Moodle
+CC Files Credits block for Moodle
 
 Provides display of all files in the current course from the course page.
 
