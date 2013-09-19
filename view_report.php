@@ -27,6 +27,7 @@
 
 //  Display the report page
 require_once('../../config.php');
+require_once('../../lib/filelib.php');
 
 global $DB, $OUTPUT, $PAGE;
 
@@ -55,7 +56,7 @@ if(has_capability('block/cc_file_credits:manage', $coursecontext)){
     $table->head = array('Name','Size','Type','Author','License','Time Created');
     $tabledata = array();
     $result = $DB->get_records_sql(
-       "SELECT filename, filesize, mimetype ,author, license, timecreated
+       "SELECT id, filename, filesize, mimetype ,author, license, timecreated
           FROM {files}
          WHERE filesize >0
            AND {files}.contextid
@@ -80,11 +81,17 @@ if(has_capability('block/cc_file_credits:manage', $coursecontext)){
                 $file->timecreated = improve_timecreated($file->timecreated);
                 $file->license     = improve_license($file_license);
         	      $file->mimetype    = improve_mimetype($file->mimetype, $OUTPUT);
-                array_push($tabledata,$file);
+                array_push($tabledata, array($file->filename,
+                                             $file->filesize,
+                                             $file->mimetype,
+                                             $file->author,
+                                             $file->license,
+                                             $file->timecreated));
             }
         }
-    } else {
-        $tabledata = array(array('none','none','none','none','none','none'));
+    }
+    if(count($tabledata) == 0){ 
+        $tabledata = array(array('No record','No record','No record','No record','No record','No record'));
     }
     $table->data = $tabledata;
 }
@@ -122,7 +129,7 @@ function improve_author($author) {
     if ($author != null){
         return $author;
     } else {
-        $author = 'None';
+        $author = 'No record';
         return $author;
     }
 }
