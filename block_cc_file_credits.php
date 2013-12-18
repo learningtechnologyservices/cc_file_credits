@@ -55,7 +55,7 @@ class block_cc_file_credits extends block_base {
 
         //Ensure only teacher can use this block
         if(has_capability('block/cc_file_credits:manage', $coursecontext)){
-            $url = new moodle_url('/blocks/cc_file_credits/view_report.php',array('id'=>$courseid));
+            $url = new moodle_url('/blocks/cc_file_credits/view.php',array('id'=>$courseid));
             $text = 'View the files in this course';
             $this->content->text .= html_writer::link($url,$text);
         } else {
