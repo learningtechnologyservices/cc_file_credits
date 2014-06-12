@@ -174,8 +174,9 @@ function improve_mimetype($mimetype, $OUTPUT) {
 // Determine if a file is with creative commons license
 function is_cc($license) {
     if($license != NULL)
-    {   $pos = strpos($license,"cc");}
-    if($pos !== false)
-    {   return true;}
+    {   $pos = strpos($license,"cc");
+        if($pos !== false)
+        {   return true;}
+    }
     return false;
 }
