@@ -50,6 +50,7 @@ class block_cc_file_credits extends block_base {
     public function get_content() {
         global $DB,$USER,$OUTPUT,$CFG;
         $this->content = new stdClass;
+        $this->content->text = "";
         $courseid = $this->page->course->id;
         $coursecontext = context_course::instance($courseid);
 
