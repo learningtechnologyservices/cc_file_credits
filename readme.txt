@@ -25,5 +25,5 @@ Released Under the GNU General Public Licence http://www.gnu.org/copyleft/gpl.ht
 How it works
 This block is used to display all the files of the current course.
 When the block is added successfully, there will be a link in the block linking to a page displaying all the files of the course.
-This blcok can only be added / configure in course page.
-This blcok can only be added / configure by the manage of the course (teacher, manager, not including non-editing teacher).
+This block can only be added / configure in course page.
+This block can only be added / configure by the manage of the course (teacher, manager, not including non-editing teacher).
