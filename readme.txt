@@ -14,7 +14,7 @@ There are two ways to install
 (3) set plugin type as "Block", choose the zip file and tick up "Acknowledgement";
 (4) click on "install the block from the zip file".
 
-This block has been tested on the following versions of Moodle: 2.5, 2.4, 2.3, 2.2. 
+This block has been tested on the following versions of Moodle: 2.8, 2.7, 2.6, 2.5, 2.4, 2.3, 2.2. 
 
 This block is copyright (c) Learning Technology Services and contributors.
 
