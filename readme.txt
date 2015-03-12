@@ -16,14 +16,14 @@ There are two ways to install
 
 This block has been tested on the following versions of Moodle: 2.8, 2.7, 2.6, 2.5, 2.4, 2.3, 2.2. 
 
-This block is copyright (c) Learning Technology Services and contributors.
+This block is copyright (c) Learning Technology Services and contributors. www.lts.ie
 
 Current languages are English only. 
 
 Released Under the GNU General Public Licence http://www.gnu.org/copyleft/gpl.html
 
 How it works
-This block is used to display all the files of the current course.
-When the block is added successfully, there will be a link in the block linking to a page displaying all the files of the course.
-This block can only be added / configure in course page.
-This block can only be added / configure by the manage of the course (teacher, manager, not including non-editing teacher).
+This block is used to display all the creative commons licensed files of the current course.
+When the block is added successfully, there will be a link in the block linking to a page displaying all these files of the course.
+This block can only be added or configured in the course page.
+This block can only be added or configured by the manager or editing teacher of the course.

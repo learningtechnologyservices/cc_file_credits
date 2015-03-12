@@ -44,12 +44,13 @@ $url = new moodle_url('/blocks/cc_file_credits/view.php',array('id'=>$courseid))
 $PAGE->set_pagelayout('report');
 $PAGE->set_url($url,array('id' => $courseid));
 $PAGE->set_title($course->fullname);
-$PAGE->set_heading('Files in '.$course->fullname);
+$PAGE->set_heading(get_string('filesheader', 'block_cc_file_credits', $course->fullname));
 
 if (!has_capability('block/cc_file_credits:manage', $coursecontext)){
     echo $OUTPUT->header();
     echo $OUTPUT->heading('Error', 1);
-    echo "Only teacher and manager are authorized to access this page.";
+    $error = get_string('accesswarning', 'block_cc_file_credits');
+    echo $error;
     echo $OUTPUT->footer();
     exit();
 }
@@ -58,7 +59,9 @@ if (!has_capability('block/cc_file_credits:manage', $coursecontext)){
 //Ensure only teacher can use this block
 if(has_capability('block/cc_file_credits:manage', $coursecontext)){
     $table = new html_table();
-    $table->head = array('Name','Size','Type','Author','License','Time Created');
+    $table->head = array(get_string('Name', 'block_cc_file_credits'), get_string('Size', 'block_cc_file_credits'),
+        get_string('Type', 'block_cc_file_credits'), get_string('Author', 'block_cc_file_credits'),
+        get_string('License', 'block_cc_file_credits'), get_string('TimeCreated', 'block_cc_file_credits'));
     $tabledata = array();
     $result = $DB->get_records_sql(
        "SELECT id, filename, filesize, mimetype ,author, license, timecreated
@@ -102,7 +105,7 @@ if(has_capability('block/cc_file_credits:manage', $coursecontext)){
 }
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading('Files in Course: '.$course->fullname, 1);
+echo $OUTPUT->heading(get_string('filesheader', 'block_cc_file_credits', $course->fullname), 1);
 echo html_writer::table($table); 
 echo $OUTPUT->footer();
 
@@ -148,17 +151,17 @@ function improve_timecreated($timecreated) {
 // Make license more readable
 function improve_license($license) {
     if($license == 'cc') {
-        $license = 'Creative Commons';
+        $license = get_string('cc_License', 'block_cc_file_credits');
     } else if ($license == 'cc-nd') {
-        $license = 'Creative Commons - NoDerivs';
+        $license = get_string('cc_nd_License', 'block_cc_file_credits');
     } else if ($license == 'cc-nc-nd') {
-        $license = 'Creative Commons - No Commercial NoDerivs';
+        $license = get_string('cc_nc_nd_License', 'block_cc_file_credits');
     } else if ($license == 'cc-nc') {
-        $license = 'Creative Commons - No Commercial';
+        $license = get_string('cc_nc_License', 'block_cc_file_credits');
     } else if ($license == 'cc-nc-sa') {
-        $license = 'Creative Commons - No Commercial ShareAlike';
+        $license = get_string('cc_nc_sa_License', 'block_cc_file_credits');
     } else if ($license == 'cc-sa') {
-        $license = 'Creative Commons - ShareAlike';
+        $license = get_string('cc_sa_License', 'block_cc_file_credits');
     }
     return $license;
 }

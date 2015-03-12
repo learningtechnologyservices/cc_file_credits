@@ -24,7 +24,22 @@
  * @contributor  Shuai Zhang <shuaizhang@lts.ie>
  */
 
-$string['pluginname'] = 'CC File Credits';
+$string['accesswarning'] = 'Only teachers and managers are authorized to access this page.';
+$string['Author'] = 'Author';
 $string['cc_file_credits'] = 'CC File Credits';
 $string['cc_file_credits:addinstance'] = 'Add a new CC File Credits block';
 $string['cc_file_credits:myaddinstance'] = 'Add a new CC File Credits block to the Course page';
+$string['cc_file_credits:manage'] = 'Access to view the CC File Credits page';
+$string['cc_License'] = 'Creative Commons';
+$string['cc_nd_License'] = 'Creative Commons - NoDerivs';
+$string['cc_nc_nd_License'] = 'Creative Commons - No Commercial NoDerivs';
+$string['cc_nc_License'] = 'Creative Commons - No Commercial';
+$string['cc_nc_sa_License'] = 'Creative Commons - No Commercial ShareAlike';
+$string['cc_sa_License'] = 'Creative Commons - ShareAlike';
+$string['filesheader'] = 'Files in Course: {$a}';
+$string['License'] = 'License';
+$string['Name'] = 'Name';
+$string['pluginname'] = 'CC File Credits';
+$string['Size'] = 'Size';
+$string['TimeCreated'] = 'Time Created';
+$string['Type'] = 'Type';
