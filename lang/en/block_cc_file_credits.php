@@ -40,6 +40,7 @@ $string['filesheader'] = 'Files in Course: {$a}';
 $string['License'] = 'License';
 $string['Name'] = 'Name';
 $string['pluginname'] = 'CC File Credits';
+$string['privacy:metadata'] = 'The Creative Commons File License block only shows data stored in other locations.';
 $string['Size'] = 'Size';
 $string['TimeCreated'] = 'Time Created';
 $string['Type'] = 'Type';

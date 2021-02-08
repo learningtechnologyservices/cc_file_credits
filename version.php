@@ -16,13 +16,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Show course's file on the current course page
+ * Show course's files on the current course page
  * 
- * @package      block
- * @subpackage   cc_file_credits
- * @copyright    2013 (c) Learning Technology Services
+ * @package      block_cc_file_credits
+ * @copyright    2021 (c) Learning Technology Services
  * @contributor  Shuai Zhang <shuaizhang@lts.ie>
  */
  
-$plugin->version  = 2013091810;
+$plugin->version  = 2021020800;
 $plugin->requires = 2011070100;
+$plugin->component = 'block_cc_file_credits'; // Full name of the plugin (used for diagnostics).
+$plugin->release = '1.0';
+$plugin->maturity = MATURITY_STABLE;
